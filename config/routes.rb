@@ -1,5 +1,6 @@
 Ineedtobail::Application.routes.draw do
-  root :to => "messages#index"
+  root :to => "home#index"
+  
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users do
     resources :messages
