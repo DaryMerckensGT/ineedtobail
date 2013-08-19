@@ -1,0 +1,10 @@
+<Response>
+  <Say>Here's how this is going to work. I'm going to repeat please reply 3 times and then wait 3 seconds. Pretend to reply each time.</Say>
+  <% 3.times do %>
+  <Say>Please reply.</Say>
+  <Pause length="3" />
+  <% end %>
+  <Say>At this point you should have convinced folks you need to bail. I'll hold the line as long as you need and then feel free to hang up and get the hell out of there!</Say>
+  <Pause length="333" />
+  <Hangup/>
+</Response>

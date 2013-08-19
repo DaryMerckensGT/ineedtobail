@@ -1,0 +1,28 @@
+<%= simple_form_for([parent, resource]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.select :type, %w(Call Text) %>
+    <%= f.select :phone_id, parent.phones.map{ |phone| [phone.to_s, phone.id] } %>
+    <label class="datetime required control-label" for="message_send_at">At</label>
+    <div id="datetimepicker2" class="message_send_at input-append">
+      <input data-format="MM/dd/yyyy HH:mm:ss PP" type="text" id="message_send_at" name="message[send_at]"></input>
+      <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+      </span>
+    </div>
+    <script type="text/javascript">
+      $(function() {
+        $('#datetimepicker2').datetimepicker({
+          language: 'en',
+          pick12HourFormat: true
+        });
+      });
+    </script>
+    <%= f.input :text, label: "Text (Optional)" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

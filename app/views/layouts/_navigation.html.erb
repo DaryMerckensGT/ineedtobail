@@ -1,4 +1,4 @@
-<%= link_to "Ineedtobail", root_path, :class => 'brand' %>
+<%= link_to "I Need To Bail", root_path, :class => 'brand' %>
 <ul class="nav">
   <% if user_signed_in? %>
     <li>
@@ -11,7 +11,13 @@
   <% end %>
   <% if user_signed_in? %>
     <li>
-    <%= link_to 'Edit account', edit_user_registration_path %>
+    <%= link_to 'Edit Account', edit_user_registration_path %>
+    </li>
+    <li>
+    <%= link_to 'Create Message', new_user_message_path(current_user) %>
+    </li>
+    <li>
+    <%= link_to 'Add Phone', new_user_phone_path(current_user) %>
     </li>
     <% if current_user.has_role? :admin %>
       <li>
