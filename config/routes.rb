@@ -10,6 +10,7 @@ Ineedtobail::Application.routes.draw do
   resources :calls, only: [] do
     member do
       get 'message'
+      post 'message'
     end
   end
 end
