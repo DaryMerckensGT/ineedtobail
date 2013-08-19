@@ -1,4 +1,6 @@
 class CallsController < InheritedResources::Base
+  protect_from_forgery :except => [:message]
+  
   def message
     @call = Call.find(params[:id])
     # notification = VendorAfterhoursNotificationLog.find_or_create_by_call_sid(params[:CallSid])
