@@ -14,7 +14,7 @@ class Call < Message
     call = client.account.calls.create(
       :from => "+1#{number}",
       :to => phone.to_s,
-      :url => "http://#{domain}/call.xml"
+      :url => "http://#{domain}/calls/{id}/message.xml"
     )
   end
 end
