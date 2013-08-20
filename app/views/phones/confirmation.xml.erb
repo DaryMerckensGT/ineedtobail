@@ -1,0 +1,8 @@
+<Response>
+  <Say>This is an automated message from I Need To Bail. You need to enter this confirmation code to confirm your phone number.</Say>
+  <Say>The confirmation number is <%= @phone.twilio_confirmation_code %>.</Say>
+  <Pause length="1" />
+  <Say>Once more, the confirmation code is <%= @phone.twilio_confirmation_code %>.</Say>
+  <Say>After you have confirmed your phone number, schedule some messages and get ready to bail!</Say>
+  <Hangup/>
+</Response>

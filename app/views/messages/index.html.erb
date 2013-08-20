@@ -1,17 +1,15 @@
-<table>
+<div class="page-header">
+  <h1>Messages</h1>
+</div>
+<table class="table table-striped">
   <tbody>
     <% parent.messages.each do |message| %>
       <tr>
         <td><%= "#{message.type} on #{message.send_at.strftime("%m/%d/%Y")} at #{message.send_at.strftime("%I:%M %p")}" %></td>
         <td><%= message.text %></td>
-        <td><%= link_to 'Show', user_message_path(parent, message) %></td>
-        <td><%= link_to 'Edit', edit_user_message_path(parent, message) %></td>
-        <td><%= link_to 'Destroy', user_message_path(parent, message), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_user_message_path(parent, message), class: "btn btn-warning" %></td>
+        <td><%= link_to 'Destroy', user_message_path(parent, message), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Message', new_user_message_path(parent), class: "btn" %>

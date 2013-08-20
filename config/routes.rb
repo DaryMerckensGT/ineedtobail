@@ -4,7 +4,14 @@ Ineedtobail::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users do
     resources :messages
-    resources :phones, only: [:new, :create, :index]
+    resources :phones, only: [:new, :create, :update, :index, :destroy] do
+      member do
+        get 'confirm'
+        get 'resend_confirmation'
+        get 'confirmation'
+        post 'confirmation'
+      end
+    end
   end
   
   resources :calls, only: [] do
