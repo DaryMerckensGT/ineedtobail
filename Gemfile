@@ -26,6 +26,8 @@ gem 'twitter-bootstrap-rails'
 gem 'bootstrap-datetimepicker-rails'
 gem 'unicorn'
 gem "twilio-ruby"
+gem 'daemons'
+gem 'delayed_job_active_record'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]
