@@ -17,6 +17,16 @@ class MessagesController < InheritedResources::Base
   end
   
   def fix_date
-    params[:message][:send_at] = DateTime.strptime(params[:message][:send_at],"%m/%d/%Y %I:%M:%S %p")
+    # raise (Time.zone.utc_offset/3600).to_s
+    # params[:message][:send_at] = Time.use_zone(current_user.time_zone) {DateTime.strptime("#{params[:message][:send_at]}", "%m/%d/%Y %I:%M %p").in_time_zone(current_user.time_zone)}
+    # raise params[:message][:send_at].to_yaml
+    # raise Time.zone.to_yaml
+    # params[:message][:send_at] = DateTime.strptime(params[:message][:send_at],"%m/%d/%Y %I:%M %p") - (Time.zone.utc_offset/3600).hours
+    # raise (params[:message][:send_at]).to_yaml
+    
+    # Time.use_zone(current_user.time_zone) do
+      params[:message][:send_at] = DateTime.strptime(params[:message][:send_at],"%m/%d/%Y %I:%M %p") + 4.hours #- (Time.zone.utc_offset/3600).hours
+    #   raise (params[:message][:send_at]).to_yaml
+    # end
   end
 end

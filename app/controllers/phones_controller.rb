@@ -4,8 +4,9 @@ class PhonesController < InheritedResources::Base
   def create
     @phone = Phone.new(phone_params)
     @phone.user = current_user
+    @phone.save
     
-    create!{ user_phones_path(current_user) }
+    redirect_to user_phones_path(current_user)
   end
   
   def update
