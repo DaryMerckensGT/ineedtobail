@@ -15,5 +15,4 @@
 //= require jqueryui
 //= require jquery.timepicker
 //= require twitter/bootstrap
-//= require turbolinks
 //= require_tree .
