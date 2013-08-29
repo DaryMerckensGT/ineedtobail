@@ -5,7 +5,7 @@ class Message < ActiveRecord::Base
   after_create :delay_send_message
   
   def to_s
-    text || "You need to come home ASAP!"
+    text.blank? ? "You need to come home ASAP!" : text
   end
   
   def delay_send_message

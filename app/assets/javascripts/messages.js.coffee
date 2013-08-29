@@ -24,7 +24,8 @@ $(->
     ampm: true
     stepMinute: 1
     onClose: (dateText, inst) ->
-      if $(this).attr('id') == 'message_send_at' && (new Date(dateText)) < Date.now()
+      if $(this).attr('id') == 'message_send_at' && (((new Date).getTime() - (new Date(dateText)).getTime()) > 59999)
         alert("Oops! You picked a date in the past.")
+        $(this).val("")
   )
 )
