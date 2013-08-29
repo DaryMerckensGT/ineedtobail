@@ -9,8 +9,8 @@ class Message < ActiveRecord::Base
   end
   
   def delay_send_message
-    repititions.times do |i|
-      delay(run_at: send_at.utc + (i * interval).minutes).send_message
+    (repititions||1).times do |i|
+      delay(run_at: send_at.utc + (i * (interval||0)).minutes).send_message
     end
   end
 end

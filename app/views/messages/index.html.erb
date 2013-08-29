@@ -3,12 +3,12 @@
 </div>
 <table class="table table-striped">
   <tbody>
-    <% parent.messages.each do |message| %>
+    <% current_user.messages.each do |message| %>
       <tr>
         <td><%= "#{message.type} on #{message.send_at.in_time_zone('Eastern Time (US & Canada)').strftime("%m/%d/%Y")} at #{message.send_at.in_time_zone('Eastern Time (US & Canada)').strftime("%I:%M %p")}" %></td>
         <td><%= message.text %></td>
-        <td><%= link_to 'Edit', edit_user_message_path(parent, message), class: "btn btn-warning" %></td>
-        <td><%= link_to 'Destroy', user_message_path(parent, message), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_message_path(message), class: "btn btn-warning" %></td>
+        <td><%= link_to 'Destroy', message_path(message), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

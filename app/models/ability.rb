@@ -30,5 +30,6 @@ class Ability
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
     
     can :manage, Message, user_id: user.id
+    can :manage, Phone, user_id: user.id
   end
 end

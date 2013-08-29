@@ -3,10 +3,10 @@
 </div>
 <table class="table table-striped">
   <tbody>
-    <% parent.phones.where{ confirmation_code == nil }.each do |phone| %>
+    <% current_user.phones.where{ confirmation_code == nil }.each do |phone| %>
       <tr>
         <td><%= phone.number %></td>
-        <td><%= link_to 'Destroy', user_phone_path(parent, phone), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        <td><%= link_to 'Destroy', phone_path(phone), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -17,13 +17,13 @@
 </div>
 <table class="table table-striped">
   <tbody>
-    <% parent.phones.where{ confirmation_code != nil }.each do |phone| %>
+    <% current_user.phones.where{ confirmation_code != nil }.each do |phone| %>
       <tr>
         <td><%= phone.number %></td>
-        <td><%= link_to 'Confirm', confirm_user_phone_path(parent, phone), class: "btn btn-primary" %></td>
-        <td><%= link_to 'Resend Confirmation via Text', resend_confirmation_user_phone_path(parent, phone, method: 'text'), class: "btn btn-warning" %></td>
-        <td><%= link_to 'Resend Confirmation via Phone', resend_confirmation_user_phone_path(parent, phone, method: 'phone'), class: "btn btn-warning" %></td>
-        <td><%= link_to 'Destroy', user_phone_path(parent, phone), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        <td><%= link_to 'Confirm', confirm_phone_path(phone), class: "btn btn-primary" %></td>
+        <td><%= link_to 'Resend Confirmation via Text', resend_confirmation_phone_path(phone, method: 'text'), class: "btn btn-warning" %></td>
+        <td><%= link_to 'Resend Confirmation via Phone', resend_confirmation_phone_path(phone, method: 'phone'), class: "btn btn-warning" %></td>
+        <td><%= link_to 'Destroy', phone_path(phone), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>

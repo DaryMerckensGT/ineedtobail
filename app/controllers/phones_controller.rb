@@ -1,27 +1,25 @@
 class PhonesController < InheritedResources::Base
-  belongs_to :user
-  
   def create
     @phone = Phone.new(phone_params)
     @phone.user = current_user
     @phone.save
     
-    redirect_to user_phones_path(current_user)
+    redirect_to phones_path
   end
   
   def update
     resource.user_confirmation = params[:phone][:user_confirmation]
     if resource.confirm
       flash[:notice] = "Phone successfully confirmed"
-      redirect_to user_phones_path(current_user)
+      redirect_to phones_path
     else
       if resource.remaining_tries <= 0
         resource.destroy
         flash[:error] = "You entered too many incorrect confirmation codes. Please try adding your phone again."
-        redirect_to user_phones_path(current_user)
+        redirect_to phones_path
       else
         flash[:error] = "Your confirmation code was incorrect. You have #{resource.remaining_tries_string} left."
-        redirect_to confirm_user_phone_path(parent, resource)
+        redirect_to confirm_phone_path(resource)
       end
     end
   end
@@ -33,7 +31,7 @@ class PhonesController < InheritedResources::Base
     params[:method] == 'text' ? resource.text_confirmation_code : resource.call_confirmation_code
     
     flash[:notice] = "Confirmation code resent."
-    redirect_to user_phones_path(current_user)
+    redirect_to phones_path
   end
   
   def confirmation

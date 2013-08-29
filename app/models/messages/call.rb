@@ -17,5 +17,4 @@ class Call < Message
       :url => "http://#{domain}/calls/#{id}/message.xml"
     )
   end
-  handle_asynchronously :send_message, :run_at => Proc.new { send_at }
 end

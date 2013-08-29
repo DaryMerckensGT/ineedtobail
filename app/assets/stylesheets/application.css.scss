@@ -10,8 +10,11 @@
  *
  *= require_self
  *= require_tree .
- *= require bootstrap-datetimepicker
+ *= require jquery.ui.datepicker
+ *= require_tree ./custom-theme
 */
+
+@import "jquery.timepicker";
 
 .content {
   background-color: #eee;
